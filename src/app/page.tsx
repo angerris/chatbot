@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import Auth from "@/components/auth/authWrapper";
-import SignUp from "@/components/auth/signup";
-import Login from "@/components/auth/login";
+import Auth from "@/components/auth/AuthWrapper";
+import SignUp from "@/components/auth/SignUp";
+import Login from "@/components/auth/Login";
 const Scene = dynamic(() => import("@/components/Scene"), { ssr: false });
 
 export default function Home() {
