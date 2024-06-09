@@ -3,14 +3,16 @@ import Button from "../Buttons";
 
 interface LoginProps {
   setIsNewUser: Dispatch<SetStateAction<boolean>>;
+  handleLogin: (email: string, password: string) => Promise<void>;
 }
 
-const Login: React.FC<LoginProps> = ({ setIsNewUser }) => {
+const Login: React.FC<LoginProps> = ({ setIsNewUser, handleLogin }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    handleLogin(email, password);
   };
 
   return (

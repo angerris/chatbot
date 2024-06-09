@@ -3,18 +3,31 @@ import Button from "../Buttons";
 
 interface SignUpProps {
   setIsNewUser: Dispatch<SetStateAction<boolean>>;
+  handleSignUp: (
+    name: string,
+    email: string,
+    password: string
+  ) => Promise<void>;
 }
 
-const SignUp: React.FC<SignUpProps> = ({ setIsNewUser }) => {
+const SignUp: React.FC<SignUpProps> = ({ setIsNewUser, handleSignUp }) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+    try {
+      await handleSignUp(name, email, password);
+    } catch (error) {
+      console.error("Sign up error", error);
+    }
   };
-
   return (
     <>
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-200">
