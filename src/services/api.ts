@@ -19,7 +19,6 @@ export const login = async (
   });
   const { authToken } = response.data;
   localStorage.setItem("token", authToken);
-  console.log(response.data);
   return response.data;
 };
 
@@ -38,7 +37,14 @@ export const signup = async (
   return response.data;
 };
 
-export const getUser = async (): Promise<User> => {
-  const response = await axiosInstance.get<User>("/auth/me");
-  return response.data;
+export const getUser = async (): Promise<User | null> => {
+  try {
+    const response = await axiosInstance.get<User>("/auth/me");
+    return response.data;
+  } catch (error: any) {
+    if (error.response && error.response.status === 401) {
+      return null;
+    }
+    throw error;
+  }
 };
