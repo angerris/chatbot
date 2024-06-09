@@ -1,10 +1,10 @@
-import SplineNext from "@splinetool/react-spline/next";
+import Spline from "@splinetool/react-spline";
 import React from "react";
 
 const Scene = () => {
   return (
-    <SplineNext
-      scene="https://prod.spline.design/NB06AAVNuWV9KO0r/scene.splinecode"
+    <Spline
+      scene="https://prod.spline.design/gIPWsSWswMOGrNZi/scene.splinecode"
       className="splineScene"
     />
   );

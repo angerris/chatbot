@@ -49,7 +49,8 @@ export default function Home() {
   if (!user) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-between">
-        <div className="authWrapper">
+        <div className="sceneWrapper">
+          {" "}
           <Scene />
         </div>
         <Auth>
