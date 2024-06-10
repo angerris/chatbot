@@ -5,6 +5,8 @@ import Auth from "@/components/auth/AuthWrapper";
 import SignUp from "@/components/auth/SignUp";
 import Login from "@/components/auth/Login";
 import { User, getUser, login, signup } from "@/services/api";
+import Preloader from "@/components/Preloader";
+import ChatPage from "@/pages/ChatPage";
 const Scene: any = dynamic(() => import("@/components/Scene"), {
   ssr: false
 });
@@ -43,13 +45,14 @@ export default function Home() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Preloader />;
   }
 
   if (!user) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-between">
-        <div className="authWrapper">
+        <div className="sceneWrapper">
+          {" "}
           <Scene />
         </div>
         <Auth>
@@ -62,11 +65,5 @@ export default function Home() {
       </main>
     );
   }
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <div>
-        Welcome! <button onClick={handleLogout}>Logout</button>
-      </div>
-    </main>
-  );
+  return <ChatPage handleLogout={handleLogout} />;
 }
