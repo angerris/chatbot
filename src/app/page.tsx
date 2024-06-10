@@ -5,6 +5,7 @@ import Auth from "@/components/auth/AuthWrapper";
 import SignUp from "@/components/auth/SignUp";
 import Login from "@/components/auth/Login";
 import { User, getUser, login, signup } from "@/services/api";
+import Preloader from "@/components/Preloader";
 const Scene: any = dynamic(() => import("@/components/Scene"), {
   ssr: false
 });
@@ -43,7 +44,7 @@ export default function Home() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Preloader />;
   }
 
   if (!user) {
