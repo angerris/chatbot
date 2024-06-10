@@ -122,3 +122,22 @@ body {
     transform: rotate(360deg);
   }
 }
+.chatWrapper {
+  background-color: var(--bg-dark);
+  color: rgb(214, 214, 214);
+}
+.sidebarWrapper {
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+.burgerMenu {
+  @media (min-width: 991px) {
+    display: none;
+  }
+}
+.chatInnerWrapper {
+  @media (max-width: 991px) {
+    padding: 8px !important;
+  }
+}
