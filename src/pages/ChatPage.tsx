@@ -1,4 +1,4 @@
-import React, { useState, MouseEventHandler } from "react";
+import React, { useState, MouseEventHandler, useEffect } from "react";
 import Button from "@/components/Buttons";
 import ChatWrapper from "@/components/chat/ChatWrapper";
 import Sidebar from "@/components/chat/Sidebar";
@@ -9,6 +9,21 @@ interface ChatPageProps {
 }
 const ChatPage: React.FC<ChatPageProps> = ({ handleLogout }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 991) {
+        setIsSidebarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
