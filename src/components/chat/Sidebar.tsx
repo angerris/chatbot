@@ -4,8 +4,7 @@ import Conversation from "./sidebar/Conversation";
 import {
   Conversation as ConversationTypes,
   deleteConversation,
-  queryAllConversations,
-  addConversation as addConversationApi
+  queryAllConversations
 } from "@/services/api";
 
 interface SidebarProps {

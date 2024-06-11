@@ -6,7 +6,6 @@ interface ConversationProps {
   onClick: () => void;
   onDelete: () => void;
 }
-
 const Conversation: React.FC<ConversationProps> = ({
   title,
   isActive,

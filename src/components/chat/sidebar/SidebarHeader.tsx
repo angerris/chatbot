@@ -4,7 +4,6 @@ import { addConversation, getUser } from "@/services/api";
 interface SidebarHeaderProps {
   onAddConversation: () => void;
 }
-
 const SidebarHeader: React.FC<SidebarHeaderProps> = ({ onAddConversation }) => {
   const [userData, setUserData] = useState<{
     id: string | null;
@@ -21,7 +20,6 @@ const SidebarHeader: React.FC<SidebarHeaderProps> = ({ onAddConversation }) => {
         setUserData({ id: id, name: user.name });
       }
     };
-
     fetchUserData();
   }, []);
 

@@ -61,10 +61,8 @@ export const addConversation = async (
     label: "string",
     created_at: new Date().toISOString()
   };
-
   await axiosInstance.post("/conversation", conversationRecord);
 };
-
 export interface Conversation {
   id: number;
   title: string;
@@ -72,7 +70,6 @@ export interface Conversation {
 
 export const queryAllConversations = async (): Promise<Conversation[]> => {
   const response = await axiosInstance.get<Conversation[]>("/conversation");
-  console.log(response.data);
   return response.data;
 };
 
