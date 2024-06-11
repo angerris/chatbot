@@ -15,19 +15,29 @@ export default function Home() {
   const [isNewUser, setIsNewUser] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (email: string, password: string) => {
-    await login(email, password);
-    const userData = await getUser();
-    setUser(userData);
+    try {
+      await login(email, password);
+      const userData = await getUser();
+      setUser(userData);
+    } catch (error: any) {
+      setError(error.message);
+    }
   };
+
   const handleSignUp = async (
     name: string,
     email: string,
     password: string
   ) => {
-    await signup(name, email, password);
-    setIsNewUser(false);
+    try {
+      await signup(name, email, password);
+      setIsNewUser(false);
+    } catch (error: any) {
+      setError(error.message);
+    }
   };
 
   const handleLogout = () => {
@@ -37,9 +47,14 @@ export default function Home() {
 
   useEffect(() => {
     async function checkAuth() {
-      const userData = await getUser();
-      setUser(userData);
-      setIsLoading(false);
+      try {
+        const userData = await getUser();
+        setUser(userData);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
     checkAuth();
   }, []);
@@ -48,7 +63,16 @@ export default function Home() {
     return <Preloader />;
   }
 
-  if (!user) {
+  if (error) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center bg-gray-800 text-gray-50">
+        <h1>ERROR</h1>
+        <div>{error}</div>
+      </main>
+    );
+  }
+
+  if (!user || !localStorage.getItem("token")) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-between">
         <div className="sceneWrapper">
@@ -64,5 +88,6 @@ export default function Home() {
       </main>
     );
   }
+
   return <ChatPage handleLogout={handleLogout} />;
 }
