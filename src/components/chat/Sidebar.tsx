@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import SidebarHeader from "./sidebar/SidebarHeader";
 import Conversation from "./sidebar/Conversation";
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  isOpen: boolean;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   const [activeConversation, setActiveConversation] = useState<number | null>(
-    null
+    1
   );
 
   return (
-    <div className="sidebarWrapper flex flex-grow w-2/6 min-h-full gap-4 flex-col rounded">
+    <div
+      className={`sidebarWrapper flex flex-grow w-2/6 min-h-full gap-4 flex-col rounded ${
+        isOpen ? "block" : "hidden"
+      }`}
+    >
       <SidebarHeader />
       <div className="flex bg-gray-800 h-full flex-col gap-2 overflow-y-auto p-2 rounded">
         <Conversation

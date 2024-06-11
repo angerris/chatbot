@@ -13,7 +13,16 @@ interface MessageType {
   isSent: boolean;
   isChatbot: boolean;
 }
-const ChatWrapper = () => {
+
+interface ChatWrapperProps {
+  onBurgerMenuClick: () => void;
+  isOpen: boolean;
+}
+
+const ChatWrapper: React.FC<ChatWrapperProps> = ({
+  onBurgerMenuClick,
+  isOpen
+}) => {
   const [messages, setMessages] = useState<MessageType[]>([]);
   const [isTyping, setIsTyping] = useState(false);
 
@@ -23,6 +32,7 @@ const ChatWrapper = () => {
     const minutes = now.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
   };
+
   const handleSendMessage = (text: string) => {
     const newMessage: MessageType = {
       id: messages.length,
@@ -49,8 +59,8 @@ const ChatWrapper = () => {
   };
 
   return (
-    <div className=" flex flex-grow flex-col justify-between w-4/6 h-full rounded relative">
-      <ChatHeader />
+    <div className="flex flex-grow flex-col justify-between w-4/6 h-full rounded relative">
+      <ChatHeader onBurgerMenuClick={onBurgerMenuClick} isOpen={isOpen} />
       <MessagesWrapper isTyping={isTyping}>
         {messages.map((message) => (
           <ChatMessage

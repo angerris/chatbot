@@ -126,11 +126,7 @@ body {
   background-color: var(--bg-dark);
   color: rgb(214, 214, 214);
 }
-.sidebarWrapper {
-  @media (max-width: 991px) {
-    display: none;
-  }
-}
+
 .burgerMenu {
   @media (min-width: 991px) {
     display: none;
@@ -140,4 +136,24 @@ body {
   @media (max-width: 991px) {
     padding: 8px !important;
   }
+}
+.sidebarWrapper {
+  @media (max-width: 991px) {
+    position: fixed;
+    z-index: 2;
+    width: 80%;
+    padding-left: 8px;
+    left: 0px;
+    background-color: #1f2937;
+    border-radius: 0 !important;
+  }
+}
+.sidebarHeader {
+  @media (max-width: 991px) {
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+}
+.sidebarWrapper.hidden {
+  display: none;
 }

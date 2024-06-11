@@ -2,7 +2,7 @@ import React from "react";
 
 const SidebarHeader = () => {
   return (
-    <div className="flex justify-between w-full h-16 p-5 items-center border-b border-gray-700 bg-blue-500 rounded">
+    <div className="flex justify-between w-full h-16 p-5 border-b border-gray-700 items-center bg-blue-500 rounded sidebarHeader">
       <h4 className="font-bold text-lg">Conversations</h4>
       <div className="cursor-pointer">
         <svg
