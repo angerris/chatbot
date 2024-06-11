@@ -24,7 +24,6 @@ const ChatPage: React.FC<ChatPageProps> = ({ handleLogout }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
