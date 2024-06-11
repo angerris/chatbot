@@ -7,7 +7,6 @@ import Image from "next/image";
 interface ChatPageProps {
   handleLogout: MouseEventHandler<HTMLButtonElement>;
 }
-
 const ChatPage: React.FC<ChatPageProps> = ({ handleLogout }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
