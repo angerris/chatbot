@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { addConversation, getUser } from "@/services/api";
 
-const SidebarHeader = () => {
+interface SidebarHeaderProps {
+  onAddConversation: () => void;
+}
+
+const SidebarHeader: React.FC<SidebarHeaderProps> = ({ onAddConversation }) => {
   const [userData, setUserData] = useState<{
     id: string | null;
-    name: string | null;
+    name?: string | null;
   }>({
     id: null,
     name: null
@@ -26,6 +30,7 @@ const SidebarHeader = () => {
       const userId = userData.id;
       const userDataObj = { id: userData.id, name: userData.name };
       await addConversation(userId, userDataObj);
+      onAddConversation();
     }
   };
 

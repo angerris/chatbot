@@ -32,7 +32,7 @@ export const signup = async (
 };
 export interface User {
   id: string | null;
-  name: string;
+  name?: string;
   email?: string;
 }
 

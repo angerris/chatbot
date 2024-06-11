@@ -4,7 +4,8 @@ import Conversation from "./sidebar/Conversation";
 import {
   Conversation as ConversationTypes,
   deleteConversation,
-  queryAllConversations
+  queryAllConversations,
+  addConversation as addConversationApi
 } from "@/services/api";
 
 interface SidebarProps {
@@ -30,6 +31,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
     fetchConversations();
   }, []);
 
+  const addConversation = async () => {
+    const conversationData = await queryAllConversations();
+    const formattedConversations = conversationData.map(
+      (conversation, index) => ({
+        id: conversation.id,
+        title: `${index + 1}`
+      })
+    );
+    setConversations(formattedConversations);
+  };
+
   const handleConversationClick = (conversationId: number) => {
     setActiveConversation(conversationId);
   };
@@ -49,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
         isOpen ? "block" : "hidden"
       }`}
     >
-      <SidebarHeader />
+      <SidebarHeader onAddConversation={addConversation} />
       <div className="flex bg-gray-800 h-full flex-col gap-2 overflow-y-auto p-2 rounded">
         {conversations.map((conversation) => (
           <Conversation
