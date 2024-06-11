@@ -48,7 +48,7 @@ This will start the dev server and open the app in your default web browser.
 /src
   ├── /app          # Main application and entry point
   ├── /components   # Reusable UI components
-  ├── /pages        # Pages (Login/Signup)
+  ├── /pages        # Pages
   ├── /services     # API service functions
   ├── /styles       # Global styles
 ```
