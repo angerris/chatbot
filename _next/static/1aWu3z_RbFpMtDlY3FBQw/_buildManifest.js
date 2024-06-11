@@ -1,0 +1,1 @@
+self.__BUILD_MANIFEST={__rewrites:{afterFiles:[],beforeFiles:[],fallback:[]},"/ChatPage":["static/chunks/989-f74d11c9e74d7955.js","static/chunks/pages/ChatPage-d196773624ccb7f4.js"],"/_error":["static/chunks/pages/_error-1be831200e60c5c0.js"],sortedPages:["/ChatPage","/_app","/_error"]},self.__BUILD_MANIFEST_CB&&self.__BUILD_MANIFEST_CB();
