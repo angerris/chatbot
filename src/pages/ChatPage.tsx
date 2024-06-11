@@ -29,7 +29,7 @@ const ChatPage: React.FC<ChatPageProps> = ({ handleLogout }) => {
   };
 
   return (
-    <main className="chatWrapper flex h-screen flex-col items-center justify-between ">
+    <main className="chatWrapper flex h-dvh flex-col items-center justify-between ">
       <div className="flex justify-between w-full h-16 px-5 py-4 items-center border-b border-gray-700">
         <Image src="/svg/logo.svg" alt="" width={50} height={50} />
         <div className="w-28">

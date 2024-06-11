@@ -59,7 +59,7 @@ const ChatWrapper: React.FC<ChatWrapperProps> = ({
   };
 
   return (
-    <div className="flex flex-grow flex-col justify-between w-4/6 h-full rounded relative">
+    <div className="flex flex-grow flex-col justify-between w-4/6 h-full rounded">
       <ChatHeader onBurgerMenuClick={onBurgerMenuClick} isOpen={isOpen} />
       <MessagesWrapper isTyping={isTyping}>
         {messages.map((message) => (
