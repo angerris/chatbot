@@ -4,11 +4,13 @@ interface ConversationProps {
   title: string;
   isActive: boolean;
   onClick: () => void;
+  onDelete: () => void;
 }
 const Conversation: React.FC<ConversationProps> = ({
   title,
   isActive,
-  onClick
+  onClick,
+  onDelete
 }) => {
   return (
     <div
@@ -18,7 +20,12 @@ const Conversation: React.FC<ConversationProps> = ({
       onClick={onClick}
     >
       <h4>{title}</h4>
-      <div>
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+          onDelete();
+        }}
+      >
         <svg
           className="h-8 w-8 text-gray-200"
           width="24"
